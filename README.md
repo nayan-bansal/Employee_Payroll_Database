@@ -18,4 +18,10 @@ start_date       DATE NOT NULL,
 PRIMARY KEY (id)
 );
 ```
-
+## UC-3: Insert Data in Table
+```
+insert into employee_payroll (name,salary,start_date) VALUES
+('mark', 50000, '2020-01-02'),
+('bill', 50000, '2018-01-03'),
+('terisa', 200000, '2019-11-13');
+```
