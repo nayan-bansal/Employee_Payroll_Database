@@ -25,3 +25,8 @@ insert into employee_payroll (name,salary,start_date) VALUES
 ('bill', 50000, '2018-01-03'),
 ('terisa', 200000, '2019-11-13');
 ```
+## UC-4: Display Data in Table
+```
+select * from employee_payroll;
+```
+
