@@ -41,3 +41,16 @@ select salary from employee_payroll where name='bill';
 select * from employee_payroll where start between cast('2018-01-01' as date) and date(now());
 ```
 
+## UC-5: Retrieve Data From Table
+```
+select salary from employee_payroll where name='bill';
+select * from employee_payroll where start between cast('2018-01-01' as date) and date(now());
+```
+## UC-6: Edit Data from Table
+```
+alter table employee_payroll add gender CHAR(1) after name;
+update employee_payroll set gender='F' where name='terisa';
+update employee_payroll set gender='M' where name='bill' or name='mark';
+```
+
+
