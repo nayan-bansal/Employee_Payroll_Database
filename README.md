@@ -85,19 +85,22 @@ VALUES('terisa', 'Marketing', 'F', 3000000, 100000, 2000000, 500000, 1500000, '2
 ## UC_11: ER Diagram
 
 #Adding Table Company
+```
  create table Company(
      company_id int not null,
      company_name varchar(50) not null,
      primary key(company_id));
-
+```
 #Adding Department Table
- create table Department (
+``` 
+create table Department (
      department_id int not null,
      department_name varchar(50) not null,
      primary key(dept_id));
-
+```
 #Adding Employee Table
- create table employee(
+``` 
+create table employee(
      employee_id int unsigned not null auto_increment primary key,
      company_id int not null,
      department_id int not null,
@@ -108,8 +111,9 @@ VALUES('terisa', 'Marketing', 'F', 3000000, 100000, 2000000, 500000, 1500000, '2
      gender char(1) not null,
      foreign key(company_id) references company(company_id),
      foreign key(department_id) references department(department_id));
-
+```
 #Adding Table Payroll
+```
 create table payroll(
      employee_id int not null auto_increment primary key,
      basic_pay double not null,
@@ -118,3 +122,45 @@ create table payroll(
      income_tax double not null,
      net_pay double not null,
      foreign key (employee_id) references employee(employee_id));
+```
+## UC_12: Insering and Retrieving  Data
+# Inserting Data
+```
+insert into Company(company_id, company_name) VALUES
+(1,'CG');
+
+insert into employee(first_name,last_name,company_id,employee_id,department_id,phone_number,address,gender) VALUES
+('mark','goel',1,1,101,'989968543','karnal','M'),
+('terisa','james',1,2,202,'9899765676','agra','F');
+
+insert into payroll(employee_id,basic_pay,deductions,taxable_pay,tax,net_pay) VALUES
+(1,50000,1000,20000,2000,30000),
+(2,70000,2000,25000,5000,45000);
+
+insert into department (department_id, department_name) VALUES
+(101,'Sales'),
+(202,'Marketing),
+(303,'AI');
+
+insert into employee_department (employee_id, departmentt_id) VALUES
+(1,101),
+(2,101),
+(2,202);
+```
+#Retrieving Data from Table
+```
+select sum(p.net_pay), e.gender from employee_details e left join payroll p
+on p.emp_id=e.emp_id group by e.gender;
+
+select avg(p.net_pay), e.gender from employee_details e left join payroll p
+on p.emp_id=e.emp_id group by e.gender;
+
+select min(p.net_pay), e.gender from employee_details e left join payroll p
+on p.emp_id=e.emp_id group by e.gender;
+
+select max(p.net_pay), e.gender from employee_details e left join payroll p
+on p.emp_id=e.emp_id group by e.gender;
+
+select count(p.net_pay), e.gender from employee_details e left join payroll p
+on p.emp_id=e.emp_id group by e.gender;
+```
