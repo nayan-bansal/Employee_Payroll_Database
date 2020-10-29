@@ -76,3 +76,9 @@ alter table employee_payroll add taxable_pay Double NOT NULL after deductions;
 alter table employee_payroll add tax Double NOT NULL after taxable_pay;
 alter table employee_payroll add net_pay Double NOT NULL after tax;
 ```
+## UC_10: Make terisa as a part of sales and marketing department
+```
+update employee_payroll set department='Sales' where name='terisa';
+insert into employee_payroll (name, department, gender, basic_pay, deductions, taxable_pay, tax, net_pay, start)
+VALUES('terisa', 'Marketing', 'F', 3000000, 100000, 2000000, 500000, 1500000, '2019-11-13');
+```
