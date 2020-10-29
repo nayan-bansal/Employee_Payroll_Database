@@ -68,3 +68,11 @@ update employee_payroll set phone_number = 9412345433, set address = 'sector-6' 
 select * from employee_payroll;
 ```
 
+## UC_9: Extend table to have basic pay, deductions, taxable, income tax, and net pay
+```
+alter table employee_payroll rename colum salary to basic_pay;
+alter table employee_payroll add deductions Double NOT NULL after basic_pay;
+alter table employee_payroll add taxable_pay Double NOT NULL after deductions;
+alter table employee_payroll add tax Double NOT NULL after taxable_pay;
+alter table employee_payroll add net_pay Double NOT NULL after tax;
+```
