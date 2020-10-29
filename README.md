@@ -82,3 +82,39 @@ update employee_payroll set department='Sales' where name='terisa';
 insert into employee_payroll (name, department, gender, basic_pay, deductions, taxable_pay, tax, net_pay, start)
 VALUES('terisa', 'Marketing', 'F', 3000000, 100000, 2000000, 500000, 1500000, '2019-11-13');
 ```
+## UC_11: ER Diagram
+
+#Adding Table Company
+ create table Company(
+     company_id int not null,
+     company_name varchar(50) not null,
+     primary key(company_id));
+
+#Adding Department Table
+ create table Department (
+     department_id int not null,
+     department_name varchar(50) not null,
+     primary key(dept_id));
+
+#Adding Employee Table
+ create table employee(
+     employee_id int unsigned not null auto_increment primary key,
+     company_id int not null,
+     department_id int not null,
+     first_name varchar(50) not null,
+     last_name varchar(50) not null,
+     address varchar(50) not null,
+     phone_number int(10) not null,
+     gender char(1) not null,
+     foreign key(company_id) references company(company_id),
+     foreign key(department_id) references department(department_id));
+
+#Adding Table Payroll
+create table payroll(
+     employee_id int not null auto_increment primary key,
+     basic_pay double not null,
+     deductions double not null,
+     taxable_income double not null,
+     income_tax double not null,
+     net_pay double not null,
+     foreign key (employee_id) references employee(employee_id));
